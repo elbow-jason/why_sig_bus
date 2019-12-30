@@ -1,0 +1,30 @@
+defmodule WhySigBus.MixProject do
+  use Mix.Project
+
+  def project do
+    [
+      app: :why_sig_bus,
+      version: "0.1.0",
+      elixir: "~> 1.9",
+      start_permanent: Mix.env() == :prod,
+      deps: deps(),
+      compilers: [:rustler] ++ Mix.compilers(),
+      rustler_crates: [
+        whysigbus_native: []
+      ],
+    ]
+  end
+
+  def application do
+    [
+      extra_applications: [:logger]
+    ]
+  end
+
+  defp deps do
+    [
+      {:rustler, "~> 0.21.0"}
+
+    ]
+  end
+end
