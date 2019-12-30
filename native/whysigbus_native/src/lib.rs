@@ -35,10 +35,10 @@ impl Decoder<'_> for Args {
     fn decode(term: Term) -> Result<Args, Error> {
         if let Ok(()) = term.decode() {
             return Ok(Args::Zero);
-        }
+        };
         if let Ok(Args::One(arg)) = term.decode() {
             return Ok(Args::One(arg));
-        }
+        };
         Err(Error::Term(Box::new(atoms::bad_arg())))
     }
 }
